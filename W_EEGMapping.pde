@@ -147,9 +147,9 @@ class W_EEGMapping extends Widget {
         //Draw data table
         dataGrid.draw();
 
-        drawStatusCircle();
+        // drawStatusCircle();
 
-        if (false) {
+        if (true) {
             //Draw some guides to help develop this widget faster
             pushStyle();
             stroke(OPENBCI_DARKBLUE);
@@ -164,12 +164,12 @@ class W_EEGMapping extends Widget {
 
         //This draws all cp5 objects in the local instance
         //focus_cp5.draw();
-        auditoryNeurofeedback.draw();
+        // auditoryNeurofeedback.draw(); // "Turn Audio On/Off" button and "Use Band Power/Metric" button
         
         //Draw the graph
-        focusBar.draw();
+        // focusBar.draw(); // focus bar graphic
 
-        focusChanSelect.draw();
+        // focusChanSelect.draw(); // channel select dropdown
     }
 
     public void screenResized() {
@@ -299,31 +299,32 @@ class W_EEGMapping extends Widget {
         }
     }
 
-    private void drawStatusCircle() {
-        color fillColor;
-        color strokeColor;
-        StringBuilder sb = new StringBuilder("");
-        if (predictionExceedsThreshold) {
-            fillColor = cFocus;
-            strokeColor = cFocus;
-        } else {
-            fillColor = cDark;
-            strokeColor = cDark;
-            sb.append("Not ");
-        }
-        sb.append(focusMetric.getIdealStateString());
-        //Draw status graphic
-        pushStyle();
-        noStroke();
-        fill(fillColor);
-        stroke(strokeColor);
-        ellipseMode(CENTER);
-        ellipse(xc, yc, wc, hc);
-        noStroke();
-        textAlign(CENTER);
-        text(sb.toString(), xc, yc + hc/2 + 16);
-        popStyle();
-    }
+    // private void drawStatusCircle() {
+    // // coloured circle to identify user relaxation/concentration status: green/blue    
+    //     color fillColor;
+    //     color strokeColor;
+    //     StringBuilder sb = new StringBuilder("");
+    //     if (predictionExceedsThreshold) {
+    //         fillColor = cFocus;
+    //         strokeColor = cFocus;
+    //     } else {
+    //         fillColor = cDark;
+    //         strokeColor = cDark;
+    //         sb.append("Not ");
+    //     }
+    //     sb.append(focusMetric.getIdealStateString());
+    //     //Draw status graphic
+    //     pushStyle();
+    //     noStroke();
+    //     fill(fillColor);
+    //     stroke(strokeColor);
+    //     ellipseMode(CENTER);
+    //     ellipse(xc, yc, wc, hc);
+    //     noStroke();
+    //     textAlign(CENTER);
+    //     text(sb.toString(), xc, yc + hc/2 + 16);
+    //     popStyle();
+    // }
 
     private void initBrainFlowMetric() {
         BrainFlowModelParams modelParams = new BrainFlowModelParams(
@@ -384,26 +385,26 @@ class W_EEGMapping extends Widget {
         updateAuditoryNeurofeedbackPosition();
     }
 
-    public void setFocusHorizScale(int n) {
-        xLimit = xLimit.values()[n];
-        focusBar.adjustTimeAxis(xLimit.getValue());
-    }
+    // public void setFocusHorizScale(int n) {
+    //     xLimit = xLimit.values()[n];
+    //     focusBar.adjustTimeAxis(xLimit.getValue());
+    // }
 
-    public void setMetric(int n) {
-        focusMetric = focusMetric.values()[n];
-        endSession();
-        initBrainFlowMetric();
-    }
+    // public void setMetric(int n) {
+    //     focusMetric = focusMetric.values()[n];
+    //     endSession();
+    //     initBrainFlowMetric();
+    // }
 
-    public void setClassifier(int n) {
-        focusClassifier = focusClassifier.values()[n];
-        endSession();
-        initBrainFlowMetric();
-    }
+    // public void setClassifier(int n) {
+    //     focusClassifier = focusClassifier.values()[n];
+    //     endSession();
+    //     initBrainFlowMetric();
+    // }
 
-    public void setThreshold(int n) {
-        focusThreshold = focusThreshold.values()[n];
-    }
+    // public void setThreshold(int n) {
+    //     focusThreshold = focusThreshold.values()[n];
+    // }
 
     public int getMetricExceedsThreshold() {
         return predictionExceedsThreshold ? 1 : 0;
@@ -415,21 +416,21 @@ class W_EEGMapping extends Widget {
 }; //end of class
 
 //The following global functions are used by the Focus widget dropdowns. This method is the least amount of code.
-public void eegMappingWindowDropdown(int n) {
-    w_eegMapping.setFocusHorizScale(n);
-}
+// public void eegMappingWindowDropdown(int n) {
+//     w_eegMapping.setFocusHorizScale(n);
+// }
 
-public void eegMappingMetricDropdown(int n) {
-    w_eegMapping.setMetric(n);
-}
+// public void eegMappingMetricDropdown(int n) {
+//     w_eegMapping.setMetric(n);
+// }
 
-public void eegMappingClassifierDropdown(int n) {
-    w_eegMapping.setClassifier(n);
-}
+// public void eegMappingClassifierDropdown(int n) {
+//     w_eegMapping.setClassifier(n);
+// }
 
-public void eegMappingThresholdDropdown(int n) {
-    w_eegMapping.setThreshold(n);
-}
+// public void eegMappingThresholdDropdown(int n) {
+//     w_eegMapping.setThreshold(n);
+// }
 
 //This class contains the time series plot for the focus metric over time
 class EEGMappingBar {
