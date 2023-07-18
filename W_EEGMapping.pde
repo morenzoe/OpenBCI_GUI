@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////
 //                                                //
-//    W_focus.pde (ie "Focus Widget")             //
-//    Enums can be found in FocusEnums.pde        //
+//    W_EEGMapping.pde                            //
 //                                                //
 //                                                //
-//    Created by: Richard Waltman, March 2021     //
+//                                                //
+//  Created by: Eraraya Morenzo Muten, July 2023  //
 //                                                //
 ////////////////////////////////////////////////////
 
