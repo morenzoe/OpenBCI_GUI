@@ -958,7 +958,7 @@ void systemDraw() { //for drawing to the screen
     }
 
     //Display GUI version and FPS in the title bar of the app
-    surface.setTitle("OpenBCI GUI " + localGUIVersionString + " - " + localGUIVersionDate + " - " + int(frameRate) + " fps");
+    surface.setTitle(localGUIVersionString + " - " + localGUIVersionDate + " - " + int(frameRate) + " fps");
 }
 
 void requestReinit() {
