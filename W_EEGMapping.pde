@@ -191,16 +191,16 @@ class W_EEGMapping extends Widget {
         focusChanSelect.screenResized(pApplet);
 
         //Custom resize these dropdowns due to longer text strings as options
-        cp5_widget.get(ScrollableList.class, "focusMetricDropdown").setWidth(METRIC_DROPDOWN_W);
-        cp5_widget.get(ScrollableList.class, "focusMetricDropdown").setPosition(
-            x0 + w0 - (dropdownWidth*2) - METRIC_DROPDOWN_W - CLASSIFIER_DROPDOWN_W - (PAD_TWO*4), 
-            navH + y0 + PAD_TWO
-            );
-        cp5_widget.get(ScrollableList.class, "focusClassifierDropdown").setWidth(CLASSIFIER_DROPDOWN_W);
-        cp5_widget.get(ScrollableList.class, "focusClassifierDropdown").setPosition(
-            x0 + w0 - (dropdownWidth*2) - CLASSIFIER_DROPDOWN_W - (PAD_TWO*3), 
-            navH + y0 + PAD_TWO
-            );
+        // cp5_widget.get(ScrollableList.class, "focusMetricDropdown").setWidth(METRIC_DROPDOWN_W);
+        // cp5_widget.get(ScrollableList.class, "focusMetricDropdown").setPosition(
+        //     x0 + w0 - (dropdownWidth*2) - METRIC_DROPDOWN_W - CLASSIFIER_DROPDOWN_W - (PAD_TWO*4), 
+        //     navH + y0 + PAD_TWO
+        //     );
+        // cp5_widget.get(ScrollableList.class, "focusClassifierDropdown").setWidth(CLASSIFIER_DROPDOWN_W);
+        // cp5_widget.get(ScrollableList.class, "focusClassifierDropdown").setPosition(
+        //     x0 + w0 - (dropdownWidth*2) - CLASSIFIER_DROPDOWN_W - (PAD_TWO*3), 
+        //     navH + y0 + PAD_TWO
+        //     );
     }
 
     void mousePressed() {

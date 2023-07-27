@@ -33,7 +33,7 @@ class W_Focus extends Widget {
 
 
     private Grid dataGrid;
-    private final int NUM_TABLE_ROWS = 6;
+    private final int NUM_TABLE_ROWS = 8;
     private final int NUM_TABLE_COLUMNS = 2;
     //private final int TABLE_WIDTH = 142;
     private int tableHeight = 0;
@@ -105,6 +105,8 @@ class W_Focus extends Widget {
         dataGrid.setString("Alpha (7.5-13Hz)", 3, 0);
         dataGrid.setString("Beta (13-30Hz)", 4, 0);
         dataGrid.setString("Gamma (30-45Hz)", 5, 0);
+        dataGrid.setString("Mu (7.5-12.5Hz)", 6, 0);
+        dataGrid.setString("SMR (13-15Hz)", 7, 0);
 
         //Instantiate local cp5 for this box. This allows extra control of drawing cp5 elements specifically inside this class.
         //focus_cp5 = new ControlP5(ourApplet);
@@ -269,9 +271,19 @@ class W_Focus extends Widget {
                     focusChanSelect.activeChan.toArray(
                         new Integer[focusChanSelect.activeChan.size()]
                     ));
+            
+            List<Pair<Double, Double>> customBand = new ArrayList<>();
 
+            customBand.add(Pair.of(1.5D, 4.0D));
+            customBand.add(Pair.of(4.0D, 8.0D));
+            customBand.add(Pair.of(7.5D, 13.0D));
+            customBand.add(Pair.of(13.0D, 30.0D));
+            customBand.add(Pair.of(30.0D, 45.0D));
+            customBand.add(Pair.of(7.5D, 12.5D));
+            customBand.add(Pair.of(13.0D, 15.0D));
+            
             //Full Source Code for this method: https://github.com/brainflow-dev/brainflow/blob/c5f0ad86683e6eab556e30965befb7c93e389a3b/src/data_handler/data_handler.cpp#L1115
-            Pair<double[], double[]> bands = DataFilter.get_avg_band_powers (dataArray, channelsInDataArray, currentBoard.getSampleRate(), true);
+            Pair<double[], double[]> bands = DataFilter.get_custom_band_powers (dataArray, customBand, channelsInDataArray, currentBoard.getSampleRate(), true);
             double[] featureVector = bands.getLeft ();
 
             //Left array is Averages, right array is Standard Deviations. Update values using Averages.
